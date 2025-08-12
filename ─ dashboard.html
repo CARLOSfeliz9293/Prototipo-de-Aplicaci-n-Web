@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Prototipo de Aplicación</title>
+    
+    <!-- Bootstrap CSS con tema Replit -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-cube me-2"></i>Prototipo App
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i>Usuario Demo
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Panel de Control
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mensajes de alerta -->
+    <div class="container mt-3">
+        <div id="alertContainer"></div>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="container mt-4">
+            <!-- Encabezado de bienvenida -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="display-6 mb-0">
+                                <i class="fas fa-tachometer-alt me-3"></i>Panel de Control
+                            </h1>
+                            <p class="text-muted mt-2">¡Bienvenido de nuevo, Usuario Demo!</p>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted">Último acceso: Hoy</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjetas de estadísticas -->
+            <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-primary text-white h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Proyectos Totales</h6>
+                                    <h2 class="mb-0" data-counter="12">0</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-folder fa-2x opacity-75"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-success text-white h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Completados</h6>
+                                    <h2 class="mb-0" data-counter="8">0</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-check-circle fa-2x opacity-75"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-warning text-dark h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">En Progreso</h6>
+                                    <h2 class="mb-0" data-counter="3">0</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-clock fa-2x opacity-75"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-info text-white h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Miembros del Equipo</h6>
+                                    <h2 class="mb-0" data-counter="15">0</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-users fa-2x opacity-75"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid de contenido principal -->
+            <div class="row">
+                <!-- Actividad reciente -->
+                <div class="col-lg-8 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                <i class="fas fa-history me-2"></i>Actividad Reciente
+                            </h5>
+                            <button class="btn btn-sm btn-outline-secondary" id="refreshActivity">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline">
+                                <div class="timeline-item mb-3">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-success rounded-circle p-2">
+                                                <i class="fas fa-check text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Proyecto Alpha completado</h6>
+                                            <p class="text-muted mb-1">Todas las tareas finalizadas con éxito</p>
+                                            <small class="text-muted">Hace 2 horas</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item mb-3">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary rounded-circle p-2">
+                                                <i class="fas fa-plus text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Nuevo miembro agregado</h6>
+                                            <p class="text-muted mb-1">Sarah Johnson se unió al equipo de desarrollo</p>
+                                            <small class="text-muted">Hace 5 horas</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item mb-3">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-warning rounded-circle p-2">
+                                                <i class="fas fa-exclamation text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Recordatorio de fecha límite</h6>
+                                            <p class="text-muted mb-1">Proyecto Beta vence en 3 días</p>
+                                            <small class="text-muted">Hace 1 día</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Acciones rápidas -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-bolt me-2"></i>Acciones Rápidas
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="showModal('createProject')">
+                                    <i class="fas fa-plus me-2"></i>Nuevo Proyecto
+                                </button>
+                                <button class="btn btn-outline-secondary" onclick="showModal('inviteUser')">
+                                    <i class="fas fa-user-plus me-2"></i>Invitar Miembro
+                                </button>
+                                <button class="btn btn-outline-secondary" onclick="showModal('generateReport')">
+                                    <i class="fas fa-chart-bar me-2"></i>Generar Reporte
+                                </button>
+                                <button class="btn btn-outline-secondary">
+                                    <i class="fas fa-cog me-2"></i>Configuración
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabla de proyectos -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                <i class="fas fa-folder me-2"></i>Proyectos Recientes
+                            </h5>
+                            <button class="btn btn-primary" onclick="showModal('createProject')">
+                                <i class="fas fa-plus me-2"></i>Nuevo Proyecto
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Proyecto</th>
+                                            <th>Estado</th>
+                                            <th>Progreso</th>
+                                            <th>Equipo</th>
+                                            <th>Fecha Límite</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-folder-open text-primary me-2"></i>
+                                                    <strong>Rediseño del Sitio Web</strong>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-success">Completado</span></td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-success" data-width="100%" style="width: 0%"></div>
+                                                </div>
+                                                <small class="text-muted">100%</small>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="https://via.placeholder.com/24x24/007bff/ffffff?text=A" class="rounded-circle me-1" width="24" height="24">
+                                                    <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=B" class="rounded-circle me-1" width="24" height="24">
+                                                    <span class="badge bg-secondary">+2</span>
+                                                </div>
+                                            </td>
+                                            <td>15 Dic, 2024</td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm">
+                                                    <button class="btn btn-outline-primary">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-outline-secondary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-folder text-warning me-2"></i>
+                                                    <strong>Desarrollo de App Móvil</strong>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-warning">En Progreso</span></td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-warning" data-width="65%" style="width: 0%"></div>
+                                                </div>
+                                                <small class="text-muted">65%</small>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=C" class="rounded-circle me-1" width="24" height="24">
+                                                    <img src="https://via.placeholder.com/24x24/ffc107/000000?text=D" class="rounded-circle me-1" width="24" height="24">
+                                                </div>
+                                            </td>
+                                            <td>30 Ene, 2025</td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm">
+                                                    <button class="btn btn-outline-primary">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-outline-secondary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-folder text-info me-2"></i>
+                                                    <strong>Migración de Base de Datos</strong>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-info">Planificación</span></td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-info" data-width="15%" style="width: 0%"></div>
+                                                </div>
+                                                <small class="text-muted">15%</small>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="https://via.placeholder.com/24x24/17a2b8/ffffff?text=E" class="rounded-circle me-1" width="24" height="24">
+                                                </div>
+                                            </td>
+                                            <td>15 Mar, 2025</td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm">
+                                                    <button class="btn btn-outline-primary">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-outline-secondary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de ejemplo -->
+    <div class="modal fade" id="actionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <p>Esta es una demostración de modal para el prototipo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Prototipo de Aplicación. Construido con Bootstrap.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
