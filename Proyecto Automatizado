@@ -1,0 +1,107 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+import unittest
+
+class TestPrototipo(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Configurar el driver de Chrome
+        cls.driver = webdriver.Chrome(ChromeDriverManager().install())
+        cls.driver.maximize_window()
+        cls.wait = WebDriverWait(cls.driver, 10)
+        cls.base_url = "file:///ruta/a/tu/proyecto/"  # Ajusta esta ruta
+
+    def test_01_registro_usuario(self):
+        """Prueba el proceso de registro de un nuevo usuario"""
+        self.driver.get(f"{self.base_url}registro.html")
+        
+        # Completar el formulario de registro
+        self.driver.find_element(By.ID, "name").send_keys("Usuario de Prueba")
+        self.driver.find_element(By.ID, "email").send_keys("prueba@test.com")
+        self.driver.find_element(By.ID, "password").send_keys("Pass1234")
+        self.driver.find_element(By.ID, "confirm-password").send_keys("Pass1234")
+        
+        # Hacer clic en el botón de registro
+        self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+        
+        # Verificar que se muestra el alert y manejarlo
+        time.sleep(1)  # Esperar breve para el alert
+        alert = self.driver.switch_to.alert
+        self.assertIn("Registro exitoso", alert.text)
+        alert.accept()
+        
+        # Verificar redirección a la página de login
+        self.assertTrue("index.html" in self.driver.current_url)
+
+    def test_02_login_exitoso(self):
+        """Prueba el inicio de sesión con credenciales válidas"""
+        self.driver.get(f"{self.base_url}index.html")
+        
+        # Completar el formulario de login
+        self.driver.find_element(By.ID, "email").send_keys("prueba@test.com")
+        self.driver.find_element(By.ID, "password").send_keys("Pass1234")
+        
+        # Hacer clic en el botón de login
+        self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+        
+        # Verificar que se muestra el alert y manejarlo
+        time.sleep(1)  # Esperar breve para el alert
+        alert = self.driver.switch_to.alert
+        self.assertIn("Inicio de sesión exitoso", alert.text)
+        alert.accept()
+        
+        # Verificar redirección al panel de usuario
+        self.assertTrue("panel.html" in self.driver.current_url)
+        
+        # Verificar elementos del panel
+        welcome_message = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, "//h2[contains(text(), 'Bienvenido al Panel de Control')]"))
+        )
+        self.assertTrue(welcome_message.is_displayed())
+
+    def test_03_logout(self):
+        """Prueba el cierre de sesión"""
+        # Asumimos que ya estamos en el panel por la prueba anterior
+        logout_link = self.wait.until(
+            EC.element_to_be_clickable((By.ID, "logout"))
+        )
+        logout_link.click()
+        
+        # Verificar que se muestra el alert y manejarlo
+        time.sleep(1)  # Esperar breve para el alert
+        alert = self.driver.switch_to.alert
+        self.assertIn("Sesión cerrada", alert.text)
+        alert.accept()
+        
+        # Verificar redirección a la página de login
+        self.assertTrue("index.html" in self.driver.current_url)
+
+    def test_04_login_fallido(self):
+        """Prueba el inicio de sesión con credenciales inválidas"""
+        self.driver.get(f"{self.base_url}index.html")
+        
+        # Completar el formulario de login con datos incorrectos
+        self.driver.find_element(By.ID, "email").send_keys("incorrecto@test.com")
+        self.driver.find_element(By.ID, "password").send_keys("WrongPass")
+        
+        # Hacer clic en el botón de login
+        self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+        
+        # Verificar que se muestra el alert y manejarlo
+        time.sleep(1)  # Esperar breve para el alert
+        alert = self.driver.switch_to.alert
+        self.assertIn("Por favor completa todos los campos", alert.text)
+        alert.accept()
+
+    @classmethod
+    def tearDownClass(cls):
+        # Cerrar el navegador
+        cls.driver.quit()
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
