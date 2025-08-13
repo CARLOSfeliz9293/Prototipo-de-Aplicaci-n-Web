@@ -1,0 +1,173 @@
+PROYECTO FINAL - PROGRAMACIÓN III 
+En este trabajo final, deberás demostrar tu dominio en la implementación de 
+proyectos de software utilizando la metodología Agile-Scrum. A continuación, se 
+detallan los requisitos y entregables que debes cumplir: 
+1. Estrategia de Trabajo (Planificación) 
+Elabora un sistem
+ a modelo (puede ser de materias anteriores o uno nuevo) y detalla 
+los siguientes puntos:
+ 1. Portada del trabajo: 
+o 
+Incluye tu nombre, matrícula, título del proyecto y fecha. 
+2. Nombre del proyecto de software: 
+o 
+Define un título claro y representativo. 
+3. Tecnología para aplicar: 
+o 
+Especifica las herramientas y lenguajes de programación que 
+utilizarás. 
+4. Objetivo del proyecto: 
+o 
+Describe la finalidad del sistema que desarrollarás. 
+5. Alcance del proyecto: 
+o 
+Define los límites y la cobertura del sistema. 
+6. Cronograma del proyecto: 
+o 
+Crea una tabla con actividades, plazos y responsables. 
+7. Definición del prim
+ o 
+er Release: 
+Describe lo que el sistema podrá hacer en su primera versión. 
+o 
+Detalla los requerimientos funcionales y no funcionales. 
+2. Metodología Scrum
+ Basándote en los requerim
+ ientos definidos:
+ 1. Definir tareas a ejecutar: 
+o 
+Divide el trabajo en tareas específicas. 
+2. Definir el equipo de trabajo: 
+o 
+Incluye roles, habilidades requeridas y responsabilidades. 
+3. Herramientas que usarían: 
+o 
+Especifica las plataformas o herramientas que soportarán el trabajo 
+(Jira, Azure DevOps, etc.). 
+4. Definir las épicas: 
+o 
+Agrupa historias de usuarios relacionadas. 
+5. Ceremonias de Scrum: 
+o 
+Planifica las fechas de reuniones como sprint planning, daily stand
+ups, y sprint review. 
+6. Historias de usuario: 
+o 
+Define al menos 10 historias de usuario, con: 
+Criterios de aceptación. 
+Puntos de historia asignados. 
+3. Plan de Pruebas 
+Elabora un plan de pruebas que incluya:
+ 1. Lista de requerim
+ o 
+ientos funcionales y no funcionales: 
+Relacionados con las historias de usuario. 
+2. Criterios de aceptación y rechazo de pruebas: 
+o 
+Define claramente cómo se evaluarán. 
+3. Herramientas de pruebas: 
+o 
+Detalla las herramientas utilizadas y justifica su elección. 
+4. Cronograma de ejecución de pruebas: 
+o 
+Especifica plazos para pruebas manuales y automatizadas. 
+5. Plantillas para casos de pruebas: 
+o 
+Crea formatos estándar para documentar resultados. 
+6. Equipos de pruebas y responsabilidades: 
+o 
+Define quién ejecutará cada prueba. 
+7. Plan de automatización de pruebas: 
+o 
+Incluye herramientas y estrategias. 
+8. Ejecución y demostración: 
+o 
+Adjunta evidencia (capturas o videos) de la automatización realizada. 
+4. Demostración y Entregables 
+1. Video: 
+o 
+Muestra el incremento del sistema, destacando las funcionalidades 
+del primer Release. 
+2. Links funcionales: 
+o 
+o 
+o 
+Repositorio del código (GitHub o Azure DevOps). 
+Herramienta de gestión (Jira o Azure DevOps) con las historias de 
+usuario. 
+Código de las pruebas automatizadas. 
+Formato del Documento 
+1. Estructura del docum
+ o 
+ento: 
+Hoja de presentación. 
+o 
+o 
+o 
+2. Estilo: 
+o 
+o 
+o 
+o 
+o 
+Índice enumerado. 
+Inicio, desarrollo y conclusiones. 
+Bibliografía. 
+Tipo de letra: Calibri 11. 
+Interlineado: Sencillo. 
+Títulos: Calibri Light 16. 
+Párrafos justificados. 
+Hojas numeradas. 
+Entregables 
+Documento en PDF con todos los puntos detallados. 
+Links funcionales a: 
+o 
+o 
+o 
+Repositorio del proyecto. 
+Herramientas de gestión de historias de usuario. 
+Código de pruebas automatizadas. 
+Video demostrativo. 
+Restricciones 
+Uso de IA: Si detectamos uso de IA no permitido, la nota será 0 y se reducirá 
+la calificación final del curso en 10 puntos. 
+Plagio: Si se detecta plagio, la nota será 0. 
+Entrega fuera de plazo: No se aceptan entregas después de la fecha límite. 
+A
+ cceso a servicios: Asegúrate de que los servicios estén disponibles para el 
+profesor y monitor antes del cierre de la tarea. 
+Correos para acceso: 
+ktejada@itla.edu.do 
+20186927@itla.edu.do 
+Rúbrica de Evaluación (20 puntos) 
+1. Documentación del Proyecto (4 puntos) 
+Portada del trabajo (0.5 puntos) 
+Nombre del proyecto de software (0.5 puntos) 
+Objetivo del proyecto (0.5 puntos) 
+Alcance del proyecto (0.5 puntos) 
+Cronograma del proyecto (1 punto) 
+Definición del primer Release (1 punto) 
+2. Implem
+ entación de Metodología Scrum
+ (5 pu
+ Definición de tareas a ejecutar (1 punto) 
+ntos) 
+Definición del equipo de trabajo (1 punto) 
+Uso de herramientas y definición de épicas (1 punto) 
+Fechas de ceremonias de Scrum (0.5 puntos) 
+Creación y asignación de 10 historias de usuarios con criterios de aceptación 
+y puntos de historia (1.5 puntos) 
+3. Plan de Pruebas (7 puntos) 
+Lista de requerimientos funcionales y no funcionales (1 punto) 
+Criterios de aceptación y rechazo (1 punto) 
+Herramientas de pruebas justificadas (1 punto) 
+Cronograma de ejecución de pruebas (1 punto) 
+Plantillas para casos de pruebas y equipos de pruebas (2 puntos) 
+Plan de automatización de pruebas (1 punto) 
+4. Demostración y Entregables (4 puntos) 
+Video mostrando el incremento del sistema (1 punto) 
+Link funcional al repositorio de código (1 punto) 
+Link funcional a Jira o Azure DevOps con historias de usuario (1 punto) 
+Automatización de pruebas funcional y demostrada (1 punto) 
+Nota: Si los links funcionales no permiten el acceso, la puntuación correspondiente 
+será 0. 
